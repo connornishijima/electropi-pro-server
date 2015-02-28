@@ -142,8 +142,8 @@
 				<tr class="addButtons">
 					<td style="padding-right: 5px;"><a href="learn.php"><div id="addSwitch" class="addButtons"><img src="images/addSwitch.png" width="64px" height="64px" style="margin-top: 8px;"/></div></a></td>
 					<td style="padding-right: 5px;"><a href="actions.php"><div id="addAction" class="addButtons"><img src="images/addAction.png" width="64px" height="64px" style="margin-top: 8px;"/></div></a></td>
-					<td style="padding-right: 5px;"><a href="events.php"><div id="addEvent" class="addButtons"><img src="images/addEvent.png" width="64px" height="64px" style="margin-top: 8px;"/></div></a></td>
-					<td><a href="tracking.php"><div id="addTrack" class="addButtons"><img src="images/addTracking.png" width="64px" height="64px" style="margin-top: 8px;"/></div></a></td>
+					<td style="padding-right: 5px;"><div id="addTrack" class="addButtons"><img src="images/addTracking.png" width="64px" height="64px" style="margin-top: 8px;"/></div></td>
+					<td><a href="events.php"><div id="addEvent" class="addButtons"><img src="images/addEvent.png" width="64px" height="64px" style="margin-top: 8px;"/></div></a></td>
 				</tr>
 			</table>
 			<?php includeSources();?>
