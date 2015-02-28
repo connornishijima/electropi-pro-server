@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ElectroPi Home Automation Server
 ================================
 
@@ -17,3 +18,7 @@ Features
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/connornishijima/electropi-server/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
+=======
+# electropi-pro-server
+ElectroPi is an open-source solution for Home Automation, tailored for the Raspberry Pi. http://www.connor-n.com/electropi  
+>>>>>>> 8b6fd0a551541b8ee4be497c97338fd00756fb9a
