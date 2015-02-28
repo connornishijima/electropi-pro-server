@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ElectroPi Home Automation Server
 ================================
 
