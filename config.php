@@ -463,6 +463,23 @@
                                                                         <div class="colAlt span1cred">
                                                                                 <table style="width:100%;height:100%;">
                                                                                         <tr>
+                                                                                                <td class="creditLeft">WIRINGPI</td>
+                                                                                        </tr>
+                                                                                </table>
+                                                                        </div>
+                                                                        <div class="colAlt span1cred">
+                                                                                <table style="width:100%;height:100%;">
+                                                                                        <tr>
+                                                                                                <td class="creditRight">DROGON</td>
+                                                                                        </tr>
+                                                                                </table>
+                                                                        </div>
+                                                                </div>
+								<br>
+								<div class="section group" style="margin-bottom: 10px;">
+                                                                        <div class="colAlt span1cred">
+                                                                                <table style="width:100%;height:100%;">
+                                                                                        <tr>
                                                                                                 <td class="creditLeft">BETA TESTERS</td>
                                                                                         </tr>
                                                                                 </table>
