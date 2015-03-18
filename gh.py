@@ -26,6 +26,6 @@ print "What has changed in this commit?"
 commit = raw_input()
 print "Which branch is this for?"
 branch = raw_input()
-os.system('sudo git commit -m "' + str(commit) + '"')
+os.system('sudo git commit -a -m "' + str(commit) + '"')
 os.system("sudo git push -u origin "+branch)
 print "Done."
