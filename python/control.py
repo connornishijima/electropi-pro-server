@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from __future__ import division # Futures have to be first-line imports
 
 # Shameless giant ASCII-art logo
@@ -21,6 +22,10 @@ import phue
 from phue import Bridge
 import subprocess
 import logging
+=======
+from __future__ import division
+
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 import os
 import time
 import datetime
@@ -40,6 +45,7 @@ import string
 import random
 import psutil
 import commands
+<<<<<<< HEAD
 from prettytable import PrettyTable
 
 #///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -50,17 +56,29 @@ from prettytable import PrettyTable
 global config
 config = ConfigParser()
 config.read('/var/www/config/settings.ini')
+=======
+
+config = ConfigParser()
+config.read('/websites/electropi/www/config/settings.ini')
+
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 rootDir = config.get("SETTINGS","rootDir").strip('"')
 webDir = config.get("SETTINGS", "webDir").strip('"')
 rgbLed = config.get("SETTINGS", "rgbLed").strip('"')
 masterFreq = config.get("SETTINGS", "masterFreq").strip('"')
 boardType = config.get("SETTINGS", "boardType").strip('"')
+<<<<<<< HEAD
 hueTTime = config.get("SETTINGS", "hueTTime").strip('"')
 
 # CHANGE DIRECTORY ///////////////////////
 os.chdir(rootDir)
 
 # KILL LAST INSTANCE OF THIS WATCHDOG  ///
+=======
+
+os.chdir(rootDir)
+
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 pid = os.getpid()
 with open("python/pid.temp") as f:
         lastPid = f.read()
@@ -69,6 +87,7 @@ with open("python/pid.temp","w") as f:
         f.write(str(pid))
 print "PID is:",pid,"- killed",lastPid
 
+<<<<<<< HEAD
 #///////////////////////////////////////////////////////////////////////////////////////////////////////
 # FUNCTIONS HERE ///////////////////////////////////////////////////////////////////////////////////////
 #///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -86,6 +105,87 @@ class MainHandler(tornado.web.RequestHandler):
 class WSHandler(tornado.websocket.WebSocketHandler):
 	global connections
 	connections = set()
+=======
+# These are to keep the logs at a reasonable size. Under normal use, this is only run once per day at 4AM.
+with open(rootDir+"/logs/client_watch.log","w") as f:
+	f.write("")
+with open(rootDir+"/logs/control_watch.log","w") as f:
+	f.write("")
+with open(rootDir+"/logs/notifications.log","w") as f:
+	f.write("")
+with open(rootDir+"/logs/wemo_watch.log","w") as f:
+	f.write("")
+with open("/var/log/apache2/error.log","w") as f:
+	f.write("")
+with open("/var/log/apache2/access.log","w") as f:
+	f.write("")
+
+class Logger(object):
+    def __init__(self):
+        self.terminal = sys.stdout
+        self.log = open(rootDir+"/logs/control_watch.log", "a")
+
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)
+
+sys.stdout = Logger()
+
+def dprint(string):
+	print string
+
+print " "
+print "///////////////////////////////////////////////////////////////////////"
+print " "
+print '8888888888 888                   888                     8888888b.  d8b '
+print '888        888                   888                     888   Y88b Y8P '
+print '888        888                   888                     888    888     '
+print '8888888    888  .d88b.   .d8888b 888888 888d888  .d88b.  888   d88P 888 '
+print '888        888 d8P  Y8b d88P"    888    888P"   d88""88b 8888888P"  888 '
+print '888        888 88888888 888      888    888     888  888 888        888 '
+print '888        888 Y8b.     Y88b.    Y88b.  888     Y88..88P 888        888 '
+print '8888888888 888  "Y8888   "Y8888P  "Y888 888      "Y88P"  888        888' 
+print " "
+print "///////////////////////////////////////////////////////////////////////"
+print " "
+
+# define output pins...
+txPin = 18
+rPin = 11
+gPin = 15
+bPin = 13
+
+# set up GPIO...
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(txPin,GPIO.OUT)
+GPIO.setup(rPin,GPIO.OUT)
+GPIO.setup(gPin,GPIO.OUT)
+GPIO.setup(bPin,GPIO.OUT)
+rPWM = GPIO.PWM(rPin,50)
+gPWM = GPIO.PWM(gPin,50)
+bPWM = GPIO.PWM(bPin,50)
+
+rPWM.start(0)
+gPWM.start(100)
+bPWM.start(100)
+
+global lastString
+lastString = "X"
+
+print "STARTING SERVER..."
+
+class MainHandler(tornado.web.RequestHandler):
+	def get(self):
+		loader = tornado.template.Loader(".")
+		self.write(loader.load("/websites/electropi/www/header.php").generate())
+
+class WSHandler(tornado.websocket.WebSocketHandler):
+	global connections
+	connections = set()
+	print connections
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 	
 	def check_origin(self, origin):
 		return True
@@ -96,19 +196,49 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 	
 	def on_message(self, message):
 		parseCommand(message)
+<<<<<<< HEAD
 		self.write_message(message)
+=======
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 	
 	def on_close(self):
 		connections.remove(self)
 		print 'connection closed...'
 
+<<<<<<< HEAD
 # This is called in a seperate thread than the main programe, and is a lopp reading WebSockets
+=======
+application = tornado.web.Application([
+	(r'/ws', WSHandler),
+	(r'/', MainHandler),
+	(r"/(.*)", tornado.web.StaticFileHandler, {"path": "./resources"}),
+])
+
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 def runServer():
 	application.listen(9393)
 	print "SERVER STARTED."
 	tornado.ioloop.IOLoop.instance().start()
 
+<<<<<<< HEAD
 # Sends WebSockets messages to all connected browsers at once
+=======
+def getSwitchName(UID):
+	foundName = 0
+	while foundName == 0:
+		try:
+			UIDconfig = ConfigParser()
+			UIDfile = '/websites/electropi/www/data/switches/'+UID+'/info.ini'
+			print UIDfile
+			UIDconfig.read(UIDfile)
+			nick = UIDconfig.get("ID", "Nickname")
+			nick = nick.replace("_"," ")
+			foundName = 1
+		except:
+			print "INI READ ERROR!"
+	return nick
+
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 def sendAll(msg):
 	print "SENT TO CLIENTS:",str(msg)
 	colorWrite("blue")
@@ -118,6 +248,7 @@ def sendAll(msg):
 	except:
 		pass
 
+<<<<<<< HEAD
 # Lets footer.php know that the watchdog is running
 def sendAliveSignal(size=6, chars=string.ascii_uppercase + string.digits):
 	s = ''.join(random.choice(chars) for _ in range(size))
@@ -216,6 +347,8 @@ def parseCommand(commandIN):
 	else:
 		print "Client says: "+commandIN
 
+=======
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 def notify(msg,type):
 	if type == "power":
 		toSend = "NOTIFY|<img src='images/lightning-icon.png' style='width:40px;height:64px;margin-right:-24px;'/>|<font style='margin-left:-14px;'>"+str(msg)+"</font>"
@@ -226,6 +359,7 @@ def notify(msg,type):
 		sendAll(toSend)
 		print toSend
 
+<<<<<<< HEAD
 #/////////////////////////////////////////////////////////////////////////////////////
 #// TOOLS ////////////////////////////////////////////////////////////////////////////
 
@@ -244,6 +378,8 @@ def getSwitchName(UID):
 			print "INI READ ERROR!"
 	return nick
 
+=======
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 def setConfigLine(file,section,key,val):
 	config = ConfigParser()
 	config.read(file)
@@ -251,6 +387,14 @@ def setConfigLine(file,section,key,val):
 	with open(file, 'wb') as configfile:
 		config.write(configfile)
 
+<<<<<<< HEAD
+=======
+def sendAliveSignal(size=6, chars=string.ascii_uppercase + string.digits):
+	s = ''.join(random.choice(chars) for _ in range(size))
+	with open("/websites/electropi/www/watchdog.rng","w") as f:
+		f.write(s)
+
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 def getCPUusage():
 	cpu = int(psutil.cpu_percent())
         if not cpu == 0:
@@ -363,6 +507,71 @@ def fixSwitchPositions():
 	if inconsistency == 1:
 		print "An inconsistency in your switch positions was automatically corrected."
 
+<<<<<<< HEAD
+=======
+#//////////////////////////////////////////////
+# FUNCTION TO HANDLE COMMANDS
+def parseCommand(commandIN):
+	print "RECEIVED: "+commandIN
+	colorWrite("green")
+	command = commandIN.strip("\n")
+	command = command.split(":")
+	type = command[0]
+
+	if type == "COM-RF":
+		print "COM-RF"
+		input = command[1]
+		inputFreq = input[:3]
+		print "FREQUENCY IS",inputFreq
+
+		if boardType == "STANDARD":
+			if inputFreq == masterFreq:
+				com = "sudo nice -n -20 "+input[3:]+" "+inputFreq
+				os.system(com)
+			else:
+				print "Sending command to slave instead!"
+		elif boardType == "PRO":
+			com = "sudo nice -n -20 "+input[3:]+" "+inputFreq
+			os.system(com)			
+
+	elif type == "AJAX-UPDATE":
+		UID = command[1]
+		newState = command[2]
+		if newState == "1":
+			notify("SWITCHED "+getSwitchName(UID)+" ON","power")
+		if newState == "0":
+			notify("SWITCHED "+getSwitchName(UID)+" OFF","power")
+		print "AJAX updating",UID+"'s state to",newState
+		sendAll("AJAX:"+UID+":"+newState)
+		setConfigLine("/websites/electropi/www/data/switches/"+UID+"/info.ini","HTML","State",str(newState))
+
+	elif type == "LEARN":
+		freq = command[1]
+		state = command[2]
+		os.system("sudo python /websites/electropi/www/python/decode.py "+freq+" "+state)
+		with open("/websites/electropi/www/python/decode."+state) as f:
+			message = f.read()
+		sendAll("LEARNED|"+message)
+
+	elif type == "ACTION":
+		AID = command[1]
+		doAction("data/actions/"+AID+".action")
+
+	elif type == "FIX-SWITCHES":
+		fixSwitchPositions()
+
+	elif type == "RST":
+		restart_program("NORM")
+
+	elif type == "RST-FAST":
+		restart_program("FAST")
+
+	elif type == "MANUAL":
+		print "MANUAL"
+	else:
+		print "Client says: "+commandIN
+
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 def doAction(file):
 	with open(file) as f:
 		actions = f.read()
@@ -484,9 +693,18 @@ def fixActions():
 			else:
 				print "After changes, action "+actionNick+" still contains at least one current switch."
 
+<<<<<<< HEAD
 def scheduleCheck():
 	sendAll("WATCHDOG")
 	global lastTimeString
+=======
+
+def scheduleCheck():
+	sendAll("WATCHDOG")
+
+	global lastString
+
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 	t = str(datetime.datetime.now().time())
 	t = t.split(".")
 	x = str(t[0])
@@ -498,9 +716,16 @@ def scheduleCheck():
 	timeStringWeb = timeString+":"+sec
 	sendAll("TIME|"+timeStringWeb)
 	print "TIME = ",hour,min,sec
+<<<<<<< HEAD
 	if not timeString == lastTimeString:
 		eventFound = False
 		lastTimeString = timeString
+=======
+#	print timeString,lastString
+	if not timeString == lastString:
+		eventFound = False
+		lastString = timeString
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 		print "TIME CHANGED, CHECKING SCHEDULED EVENTS..."
 		notify("TIME IS NOW: "+timeString,"general")
 		with open("python/event.list") as f:
@@ -537,6 +762,10 @@ def scheduleCheck():
 		if eventFound == False:
 			print "Nothing scheduled."
 
+<<<<<<< HEAD
+=======
+#//////////////////////////////////////////////
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 # FUNCTION TO WRITE COLOR TO GPIO
 def colorWrite(color):
 	if rgbLed == "ENABLED":
@@ -558,6 +787,7 @@ def colorWrite(color):
 			GPIO.output(gPin,1)
 			GPIO.output(bPin,0)
 
+<<<<<<< HEAD
 #/////////////////////////////////////////////////////////////////////////////////////
 #// PHILIPS HUE //////////////////////////////////////////////////////////////////////
 
@@ -847,6 +1077,10 @@ except phue.PhueRegistrationException:
                 time.sleep(1)
 
 # Flash red to show the user we're up...
+=======
+#/////////////////////////////////////////////
+
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 if rgbLed == "ENABLED":
 	fade = 0
 	while fade < 100:
@@ -856,7 +1090,10 @@ if rgbLed == "ENABLED":
 else:
 	colorWrite("kill")
 
+<<<<<<< HEAD
 # Main program -------------------------------------------------------------
+=======
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 def doLoop():
 	blipCount = 1
 	bloopCount = 1
@@ -868,6 +1105,7 @@ def doLoop():
 		bloopCount += 1
 	
 		if blipCount > 3:
+<<<<<<< HEAD
 			blipCount = 0		
 			getCPUusage()
 			scheduleCheck()
@@ -877,6 +1115,19 @@ def doLoop():
 				getHueLamps()
 			except:
 				pass
+=======
+			blipCount = 0
+		
+	#		GPIO.output(txPin,1)
+	#		time.sleep(0.02)
+	#		GPIO.output(txPin,0)
+	#		time.sleep(0.02)
+	
+			getCPUusage()
+			scheduleCheck()
+	
+		if bloopCount >= 60:
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 			colorWrite("red")
 			print "BLOOP"
 			bloopCount = 0
@@ -899,16 +1150,25 @@ def doLoop():
 		for item in command:
 			if len(item) > 1:
 				colorWrite("green")
+<<<<<<< HEAD
 				print "!----------------- RECEIVED COMMAND: " + item
 				parseCommand(item)
 
 # Let footer.php know we're alive every 0.5s
+=======
+				print "!------------------------------------------------ RECEIVED COMMAND: " + item
+				parseCommand(item)
+
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 def doAlive():
 	while True:
 		sendAliveSignal()
 		time.sleep(0.5)
 
+<<<<<<< HEAD
 # LETS GO!
+=======
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 Thread(target = runServer).start()
 Thread(target = doLoop).start()
 Thread(target = doAlive).start()

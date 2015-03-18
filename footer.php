@@ -166,8 +166,13 @@
 function sendMessage(msg){
     // Wait until the state of the socket is not ready and send the message when it is...
     waitForSocketConnection(window.wsocket, function(){
+<<<<<<< HEAD
         window.wsocket.send(msg);
         console.log("message sent!!!");
+=======
+        console.log("message sent!!!");
+        window.wsocket.send(msg);
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
     });
 }
 // Make the function wait until the connection is made...
@@ -188,7 +193,10 @@ function waitForSocketConnection(socket, callback){
 }
 
 	function parseMessage(message){
+<<<<<<< HEAD
                 console.log(message)
+=======
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 		message = message.split("|");
 		type = message[0];
 		if(type == "NOTIFY"){
@@ -208,11 +216,14 @@ function waitForSocketConnection(socket, callback){
 			code = message[1];
 			learnedCode(code);
 		}
+<<<<<<< HEAD
 		if(type == "HUE-AJAX"){
 			lampList = message[1];
 			color = message[2];
 			updateHues(lampList,color);
 		}
+=======
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 	}
 
 window.supportsVibrate = "vibrate" in window.navigator;
@@ -274,6 +285,7 @@ function ping(){
        });
 }
 
+<<<<<<< HEAD
 function hueColor(lampList,color){
 	sendMessage("HUE-COLOR:"+String(lampList)+":"+color);
 	updateHues(lampList,color);
@@ -291,3 +303,7 @@ function updateHues(lampList,color){
 }
 
 </script>
+=======
+</script>
+
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e

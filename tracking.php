@@ -35,9 +35,11 @@
 				$pieces = explode(",",$checkinLine);
 				$deviceOS = $pieces[0];
 				$deviceNick = $pieces[1];
-				if(!in_array($deviceNick,$deviceNickList)){
-					array_push($deviceOSList,$deviceOS);
-					array_push($deviceNickList,$deviceNick);
+				if($deviceNick != "epi"){
+					if(!in_array($deviceNick,$deviceNickList)){
+						array_push($deviceOSList,$deviceOS);
+						array_push($deviceNickList,$deviceNick);
+					}
 				}
 			}
 		}
@@ -98,7 +100,7 @@
 					<table <?php echo $tabStretch;?>>
 						<tr style="background-color:#242424;">
 							<td style="padding:5px;font-size: 24px;">
-								KNOWN DEVICES:
+								PICK A KNOWN DEVICE:
 							</td>
 						</tr>
 						<tr style="background-color:#242424;font-family: 'Dosis';">

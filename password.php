@@ -2,10 +2,17 @@
 
 $lockColor = $sets["SETTINGS"]["offColor"];
 
+<<<<<<< HEAD
 $passMD5 = trim(file_get_contents("../local/epi_pass_md5.txt"));
 
 if($passMD5 == ""){
 	file_put_contents("../local/epi_pass_md5.txt","4dfcb7e47d53ff431f231f8bfc51c32d");
+=======
+$passMD5 = trim(file_get_contents("../epi_pass.txt"));
+
+if($passMD5 == ""){
+	file_put_contents("../epi_pass.txt","4dfcb7e47d53ff431f231f8bfc51c32d");
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 }
 
 if(isset($_GET["oldPass"])){
@@ -14,7 +21,11 @@ if(isset($_GET["oldPass"])){
 if(isset($_GET["newPass"])){
 	$newPass = md5($_GET["newPass"]);
 	if($oldPass == $passMD5){
+<<<<<<< HEAD
 		file_put_contents("../local/epi_pass_md5.txt",$newPass);
+=======
+		file_put_contents("../epi_pass.txt",$newPass);
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 	}
 }
 
@@ -111,7 +122,11 @@ if(!function_exists('showLoginPasswordProtect')) {
 // show login form
 function showLoginPasswordProtect($error_msg) {
 
+<<<<<<< HEAD
 $passMD5 = trim(file_get_contents("../local/epi_pass_md5.txt"));
+=======
+$passMD5 = trim(file_get_contents("../epi_pass.txt"));
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 
 if(trim($passMD5) == "4dfcb7e47d53ff431f231f8bfc51c32d"){
 	$error_msg = "Password is default 'electropi',<br>please change this immediately!";

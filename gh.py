@@ -1,7 +1,11 @@
 import os
 
 #print "Erasing user-specific files..."
+<<<<<<< HEAD
 os.chdir("/var/www")
+=======
+os.chdir("/websites/electropi/www")
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 #with open("testing/erase.list") as f:
 #        eraseList = f.read()
 #        eraseList = eraseList.split("\n")

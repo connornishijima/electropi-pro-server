@@ -44,9 +44,12 @@
 	if(isset($_POST["deviceTimeout"])){
 		$sets['SETTINGS']["deviceTimeout"] = $_POST["deviceTimeout"];
 	}
+<<<<<<< HEAD
 	if(isset($_POST["hueTTime"])){
 		$sets['SETTINGS']["hueTTime"] = $_POST["hueTTime"];
 	}
+=======
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 
 	//-----------------------------------------------------
 
@@ -182,6 +185,7 @@
 										</div>
                                                                         </div>
                                                                 </div>
+<<<<<<< HEAD
 
 								<div class="confSectionTitle">HUE SETTINGS</div>
 
@@ -198,6 +202,8 @@
                                                                         </div>
                                                                 </div>
 
+=======
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 								<div class="section group">
                                                                         <div class="col span1conf2">
 										<div class="settingInlineNameWrap">
@@ -482,6 +488,26 @@
                                                                         <div class="colAlt span1cred">
                                                                                 <table style="width:100%;height:100%;">
                                                                                         <tr>
+<<<<<<< HEAD
+=======
+                                                                                                <td class="creditLeft">WIRINGPI</td>
+                                                                                        </tr>
+                                                                                </table>
+                                                                        </div>
+                                                                        <div class="colAlt span1cred">
+                                                                                <table style="width:100%;height:100%;">
+                                                                                        <tr>
+                                                                                                <td class="creditRight">DROGON</td>
+                                                                                        </tr>
+                                                                                </table>
+                                                                        </div>
+                                                                </div>
+								<br>
+								<div class="section group" style="margin-bottom: 10px;">
+                                                                        <div class="colAlt span1cred">
+                                                                                <table style="width:100%;height:100%;">
+                                                                                        <tr>
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
                                                                                                 <td class="creditLeft">BETA TESTERS</td>
                                                                                         </tr>
                                                                                 </table>
@@ -590,7 +616,10 @@
 					boardType : document.getElementsByName("boardType")[0].value,
 					deviceInterval : document.getElementsByName("deviceInterval")[0].value,
 					deviceTimeout : document.getElementsByName("deviceTimeout")[0].value,
+<<<<<<< HEAD
 					hueTTime : document.getElementsByName("hueTTime")[0].value,
+=======
+>>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 					updated : "true"
 				},
 				success: function(msg)
