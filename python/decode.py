@@ -97,11 +97,7 @@ def printPercent(soFar,total):
 
 def output(message):
 	global switchType
-<<<<<<< HEAD
 	with open("/var/www/python/decode."+switchType,"w") as f:
-=======
-	with open("/websites/electropi/www/python/decode."+switchType,"w") as f:
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 		f.write(message)
 
 def prettyWrap(s):
@@ -116,11 +112,7 @@ print "--------------------\n"
 
 print "Building binary array..."
 
-<<<<<<< HEAD
 inBin = "111111"+commands.getoutput("sudo /var/www/python/rx "+freq)
-=======
-inBin = "111111"+commands.getoutput("sudo /websites/electropi/www/python/rx "+freq)
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 inArray = list(inBin)
 
 countArray = []

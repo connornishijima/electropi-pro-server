@@ -3,32 +3,18 @@ import os
 import datetime
 import sys
 from ConfigParser import ConfigParser
-<<<<<<< HEAD
 
 print "CHECK IN WATCHDOG"
 
 os.chdir("/var/www/python")
 config = ConfigParser()
 config.read('/var/www/config/settings.ini')
-=======
-import requests
-
-print "CHECK IN WATCHDOG"
-
-os.chdir("/websites/electropi/www/python")
-config = ConfigParser()
-config.read('/websites/electropi/www/config/settings.ini')
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 global deviceInterval
 deviceInterval = config.get("SETTINGS","deviceInterval").strip('"')
 deviceTimeout = config.get("SETTINGS","deviceTimeout").strip('"')
 deviceInterval = int(deviceInterval) + int(deviceTimeout)
 global skipBeat
 skipBeat = 0
-<<<<<<< HEAD
-=======
-count = 5
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 
 def last_line(in_file, block_size=1024, ignore_ending_newline=False):
     suffix = ""
@@ -132,11 +118,7 @@ def checkDeviceTimes():
 					print "DOING ACTION FOR",str(device),"FOUND!"
 
 					with open("command.list","a") as f:
-<<<<<<< HEAD
 						#f.write("ACTION:IZTGSVHDYO\n") --------------------------------------------------------------------------------------------------------------!
-=======
-						f.write("ACTION:IZTGSVHDYO\n")
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 				else:
 					firstRun = 0
 		if logIs == "BAD":
@@ -152,11 +134,7 @@ def checkDeviceTimes():
 						print "DOING ACTION FOR",str(device),"LOST!"
 
 						with open("command.list","a") as f:
-<<<<<<< HEAD
                                                 	#f.write("ACTION:KWSEXXUGYU\n") ------------------------------------------------------------------------------------------------------!
-=======
-                                                	f.write("ACTION:KWSEXXUGYU\n")
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 					else:
 						firstRun = 0
 		print "----------------"
@@ -173,11 +151,7 @@ def populateDeviceStates():
 	global deviceStates
 
 def restart_program():
-<<<<<<< HEAD
 	os.system("sudo python /var/www/python/checkIn_watch.py")
-=======
-	os.system("sudo python /websites/electropi/www/python/checkIn_watch.py")
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 	sys.exit()
 
 global lastRequest
@@ -200,22 +174,11 @@ while True:
 	except:
 		restart_program()
 
-<<<<<<< HEAD
 	config.read('/var/www/config/settings.ini')
-=======
-	config.read('/websites/electropi/www/config/settings.ini')
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 	global deviceInterval
 	deviceInterval = config.get("SETTINGS","deviceInterval").strip('"')
 	deviceTimeout = config.get("SETTINGS","deviceTimeout").strip('"')
 	deviceInterval = int(deviceInterval) + int(deviceTimeout)
 	global firstRun
 	firstRun = 0
-<<<<<<< HEAD
-=======
-	count += 1
-	if count >= 5:
-		count = 0
-		response = requests.get('http://127.0.0.1/checkIn.php?type=android&deviceNickname=epi')
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 	time.sleep(1)      # Do this once per second.

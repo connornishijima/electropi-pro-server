@@ -33,7 +33,6 @@
 		deleteDir("data/switches/".$UID);
 	}
 
-<<<<<<< HEAD
 	if(isset($_GET["view"])){
                 $currentView = "#".$_GET["view"];
         }
@@ -41,8 +40,6 @@
                 $currentView = "#none";
         }
 
-=======
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 	function includeSources(){
 		$count = 0;
 		$switchesFound = 0;
@@ -148,7 +145,6 @@
 	<link rel="prefetch" href="config.php">
 	<!------------------------------------------------------->
 		<div id="wrapper" style="margin-top: -10px;"> <!-- We remove the header margin to make the control list fit flush. -->
-<<<<<<< HEAD
 			<div id="slideButtonsRow">
 				<table <?php echo $tabStretch;?>>
 					<tr>
@@ -182,27 +178,12 @@
 					<input type=color id="HUE-HueLeft_HueRight" onchange="hueColor(this.id.split('-')[1],this.value);" style="width: 100%;height: 50px;opacity:0;"></input>
 				</div>
 			</div>
-=======
-			<table <?php echo $tabStretch;?>>
-				<tr class="addButtons">
-					<td style="padding-right: 5px;"><a href="learn.php"><div id="addSwitch" class="addButtons"><img src="images/addSwitch.png" width="64px" height="64px" style="margin-top: 8px;"/></div></a></td>
-					<td style="padding-right: 5px;"><a href="actions.php"><div id="addAction" class="addButtons"><img src="images/addAction.png" width="64px" height="64px" style="margin-top: 8px;"/></div></a></td>
-					<td style="padding-right: 5px;"><a href="events.php"><div id="addEvent" class="addButtons"><img src="images/addEvent.png" width="64px" height="64px" style="margin-top: 8px;"/></div></a></td>
-					<td><a href="tracking.php"><div id="addTrack" class="addButtons"><img src="images/addTracking.png" width="64px" height="64px" style="margin-top: 8px;"/></div></a></td>
-				</tr>
-			</table>
-			<?php includeSources();?>
-			<div class="spacer"></div>
-			<?php includeActions($maxWidth);?>
-			<div class="spacer"></div>
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 		</div>
 	<!------------------------------------------------------->
 
 	<!-- Include Footer -->
 	<?php include("footer.php");?>
 	</body>
-<<<<<<< HEAD
 
 	<script>
 		window.currentView = <?php echo json_encode($currentView);?>;
@@ -242,6 +223,4 @@
                 }
 	</script>
 
-=======
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 </html>

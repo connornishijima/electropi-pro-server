@@ -47,11 +47,7 @@
 		mkdir("data/switches/".$UID, 0777, true);
 		copy("presets/learned-default/source.php", "data/switches/".$UID."/source.php");
 
-<<<<<<< HEAD
 		file_put_contents("data/switches/".$UID."/info.ini","[HTML]\nposition = ".(count(scandir("data/switches"))-2)."\nstate = 0\n\n[ID]\nnickname = ".$nick."\n\n[CONTROL]\noncodedata = on.bin\noffcodedata = off.bin\nrepeat = 10\nfreq = ".$freq."\n");
-=======
-		file_put_contents("data/switches/".$UID."/info.ini","[HTML]\nposition = ".(count(scandir("data/switches"))-2)."\nstate = 0\n\n[ID]\nnickname = ".strtoupper($nick)."\n\n[CONTROL]\noncodedata = on.bin\noffcodedata = off.bin\nrepeat = 10\nfreq = ".$freq."\n");
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 		file_put_contents("data/switches/".$UID."/on.bin",$onCode);
 		file_put_contents("data/switches/".$UID."/off.bin",$offCode);
 		header("Location: index.php");

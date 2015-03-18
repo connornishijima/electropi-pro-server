@@ -2,17 +2,10 @@
 	$UID = basename(__DIR__);
 	$switchUID = $UID;
 
-<<<<<<< HEAD
 	include("/var/www/includes/configFile.php");
 	include("/var/www/includes/strings.php");
 
 	$switchInfo = file_get_contents("/var/www/data/switches/".$UID."/info.ini");
-=======
-	include("/websites/electropi/www/includes/configFile.php");
-	include("/websites/electropi/www/includes/strings.php");
-
-	$switchInfo = file_get_contents("/websites/electropi/www/data/switches/".$UID."/info.ini");
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 	$switchInfo = explode("\n",$switchInfo);
 	foreach($switchInfo as &$line){
 		if(strlen($line) > 1){
@@ -44,13 +37,8 @@
 		}
 	}
 
-<<<<<<< HEAD
 	$onCodeData = file_get_contents("/var/www/data/switches/".$UID."/on.bin");
 	$offCodeData = file_get_contents("/var/www/data/switches/".$UID."/off.bin");
-=======
-	$onCodeData = file_get_contents("/websites/electropi/www/data/switches/".$UID."/on.bin");
-	$offCodeData = file_get_contents("/websites/electropi/www/data/switches/".$UID."/off.bin");
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 
 	${"onCode".$UID} = $onCodeData;
 	${"onCom".$UID} = "COM-RF:".${$UID."freq"}." python/tx ".${"onCode".$UID}." ".${$UID."repeat"};

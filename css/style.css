@@ -188,7 +188,6 @@
 	opacity:0.5;
 }
 
-<<<<<<< HEAD
 #addButton{
 	text-align: center;
 	padding: 0px 15px 0px 15px;
@@ -212,14 +211,6 @@
 
 .hSpace{
 	width: 5px;
-=======
-.addButtons{
-	height:80px;
-	margin-top:15px;
-	margin-bottom:15px;
-	margin-left: auto;
-	margin-right: auto;
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 }
 
 .sectionTitle{
@@ -427,15 +418,12 @@
 	font-size: 24px;
 }
 
-<<<<<<< HEAD
 .confSectionTitle{
 	text-align: center;
 	font-size: 24px;
 	margin: 10px;
 }
 
-=======
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 #confConfirm,#eventAddConfirm,#actionAddConfirm{
 	background-color: rgba(255, 242, 150, 0.3);
 	color: #FFE374;
@@ -530,11 +518,7 @@
 .actionControl{
 	height: 64px;
 	font-size: 20px;
-<<<<<<< HEAD
 	color: #cccccc;
-=======
-	color: #ff5c93;
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
 	background-color: #242424;
 }
 
@@ -560,7 +544,6 @@
 .spacer{
 	height: 10px;
 }
-<<<<<<< HEAD
 
 .addIcon{
 	width: 64px;
@@ -580,5 +563,3 @@
 .compSpace{
 	height:5px;
 }
-=======
->>>>>>> cf616fd2afe1db88117e4778cf5e653ba568bb8e
